@@ -210,7 +210,7 @@ def get_inference_pipeline(rf_config, max_tfidf_features):
     random_Forest = RandomForestRegressor(**rf_config)
 
     sk_pipe = Pipeline(steps=[("preprocessor", preprocessor),
-                              ("classifier", random_Forest),
+                              ("random_forest", random_Forest),
                               ]
                       )
 
