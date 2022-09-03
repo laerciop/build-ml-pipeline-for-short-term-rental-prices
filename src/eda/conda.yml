@@ -4,10 +4,17 @@ channels:
   - defaults
 dependencies:
   - jupyterlab=3.4.5
-  - seaborn=0.11.1
-  - pandas=1.2.3
-  - pip=20.3.3
-  - pandas-profiling=2.11.0
-  - pyarrow=2.0
+  - seaborn
+  - pandas
+  - pip
+  - pandas-profiling
+  - pyarrow
   - pip:
       - wandb
+  
+
+  dependencies:
+  - jupyterlab
+  - pandas
+  - pyarrow
+  - wandb
