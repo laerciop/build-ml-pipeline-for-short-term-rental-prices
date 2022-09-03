@@ -8,5 +8,5 @@ dependencies:
     - jupyterlab
     - seaborn
     - pandas
-#    - pandas-profiling
+    - pandas-profiling
 #    - pyarrow
