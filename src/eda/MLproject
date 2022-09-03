@@ -8,7 +8,7 @@ entry_points:
     nobrowser:
       description: Option to start Jupyter Notebook with the --nobrowser option
       type: string
-      default: 'none'
+      default: --nobrowser
     port:
       description: Port to expose JN server
       type: float
