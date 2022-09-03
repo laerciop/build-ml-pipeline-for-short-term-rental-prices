@@ -5,7 +5,7 @@ channels:
 dependencies:
   - pip
   - pip:
-      jupyterlab=3.4.5
+      jupyterlab==3.4.5
       seaborn
       pandas
       pandas-profiling
