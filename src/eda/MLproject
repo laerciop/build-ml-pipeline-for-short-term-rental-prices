@@ -4,12 +4,13 @@ conda_env: conda.yml
 entry_points:
   main:
   parameters:
+
     nobrowser:
-        description: Option to start Jupyter Notebook with the --nobrowser option
-        type: string
-        default: 'none'
+      description: Option to start Jupyter Notebook with the --nobrowser option
+      type: string
+      default: 'none'
     port:
-        description: Port to expose JN server
-        type: float
-        default: 5000
+      description: Port to expose JN server
+      type: float
+      default: 5000
     command: jupyter notebook {nobrowser} --port={port}
