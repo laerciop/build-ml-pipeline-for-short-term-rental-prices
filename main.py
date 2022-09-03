@@ -80,7 +80,8 @@ def go(config: DictConfig):
 
         if "data_split" in active_steps:
             _ = mlflow.run(f"{config['main']['components_repository']}/train_val_test_split",
-                            "main",
+                            entry_point="main",
+                            version="main",
                             parameters={"input": "clean_sample.csv:latest",
                                         "test_size": config["modeling"]["test_size"],
                                         "random_seed": config["modeling"]["random_seed"],
