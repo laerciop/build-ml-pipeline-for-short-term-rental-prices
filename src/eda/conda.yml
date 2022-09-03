@@ -6,7 +6,7 @@ dependencies:
   - pip
   - pip:
     - jupyterlab
-    - seaborn
-    - pandas
-    - pandas-profiling
-    - pyarrow
+#    - seaborn
+#    - pandas
+#    - pandas-profiling
+#    - pyarrow
