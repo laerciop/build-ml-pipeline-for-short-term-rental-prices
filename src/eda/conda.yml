@@ -4,9 +4,9 @@ channels:
   - defaults
 dependencies:
   - pip
+  - pandas-profiling=2.11.0
   - pip:
     - jupyterlab
     - seaborn
     - pandas
-    - pandas-profiling
-#    - pyarrow
+    - pyarrow
