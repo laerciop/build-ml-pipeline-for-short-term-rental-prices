@@ -3,9 +3,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - jupyterlab
   - pip
   - pip:
-      jupyterlab
       seaborn
       pandas
       pandas-profiling
