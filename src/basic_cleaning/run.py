@@ -6,6 +6,7 @@ import argparse
 import logging
 import wandb
 import pandas as pd
+import numpy as np
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
@@ -29,6 +30,9 @@ def go(args):
         min_price = args.min_price
         max_price = args.max_price
         index_mask = df['price'].between(min_price, max_price)
+        
+        df['price'] = np.log1p(df['price']) # applying log transformation
+
         df = df[index_mask].copy()
         logger.info("Outliers removed")
 
