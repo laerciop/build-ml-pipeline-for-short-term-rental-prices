@@ -64,6 +64,8 @@ def test_row_count(data):
     assert 15000 < data.shape[0] < 1000000
 
 def test_price_range(data, min_price, max_price):
-    assert data['price'].lt(min_price).sum() == 0
-    assert data['price'].gt(max_price).sum() == 0
+    log_min_price = np.log1p(min_price)
+    log_max_price = np.log1p(max_price)
+    assert data['price'].lt(log_min_price).sum() == 0
+    assert data['price'].gt(log_max_price).sum() == 0
 
