@@ -14,6 +14,7 @@ import json
 import pandas as pd
 import numpy as np
 from sklearn.compose import ColumnTransformer
+from sklearn.compose import TransformedTargetRegressor
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
@@ -204,9 +205,11 @@ def get_inference_pipeline(rf_config, max_tfidf_features):
 
     # Create random forest
     random_Forest = RandomForestRegressor(**rf_config)
+    rf_tt = TransformedTargetRegressor(regressor=random_Forest,
+                               func=np.log1p)
 
     sk_pipe = Pipeline(steps=[("preprocessor", preprocessor),
-                              ("random_forest", random_Forest),
+                              ("random_forest", rf_tt),
                               ]
                       )
 
