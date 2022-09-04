@@ -40,9 +40,6 @@ def go(args):
         df = df[index_mask].copy()
         logger.info("Outliers removed")
 
-        df['price'] = np.log1p(df['price'])
-        logger.info("Target log transformation done")
-
         df.to_csv(args.output_artifact, index=False)
         logger.info("Saving file")
 
