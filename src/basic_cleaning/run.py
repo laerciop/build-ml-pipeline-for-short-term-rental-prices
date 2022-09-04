@@ -22,6 +22,10 @@ def go(args):
         df = pd.read_csv(local_path)
 
         # Drop outliers
+
+        idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+        df = df[idx].copy()
+
         min_price = args.min_price
         max_price = args.max_price
         index_mask = df['price'].between(min_price, max_price)
