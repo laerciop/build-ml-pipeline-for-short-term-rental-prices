@@ -32,7 +32,7 @@ def go(args):
 
     # Read test dataset
     X_test = pd.read_csv(test_dataset_path)
-    y_test = np.log1p(X_test.pop("price")) #logging transform feature to meet production conditions
+    y_test = X_test.pop("price")
 
     logger.info("Loading model and performing inference on test set")
     sk_pipe = mlflow.sklearn.load_model(model_local_path)
