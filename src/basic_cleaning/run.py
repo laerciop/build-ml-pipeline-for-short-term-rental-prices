@@ -22,23 +22,26 @@ def go(args):
         local_path = wandb.use_artifact(args.input_artifact).file()
         df = pd.read_csv(local_path)
 
-        # Drop outliers
+        # handling nan
+        df['last_review'] = pd.to_datetime(df['last_review']) #firstly change data type
+        df['last_review'] = df['last_review'].fillna(df['last_review'].min())
+        df['reviews_per_month'] = df['reviews_per_month'].fillna(0)
+        df = df.dropna(subset=['name', 'host_name'])
+        logger.info("NaN removed")
 
+        # Drop outliers
         idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
         df = df[idx].copy()
 
         min_price = args.min_price
         max_price = args.max_price
         index_mask = df['price'].between(min_price, max_price)
-        
-        df['price'] = np.log1p(df['price']) # applying log transformation
 
         df = df[index_mask].copy()
         logger.info("Outliers removed")
 
-        #Converting date columns to datetime
-        df['last_review'] = pd.to_datetime(df['last_review'])
-        logger.info("Converting data types")
+        df['price'] = np.log1p(df['price'])
+        logger.info("Target log transformation done")
 
         df.to_csv(args.output_artifact, index=False)
         logger.info("Saving file")
@@ -50,16 +53,6 @@ def go(args):
         artifact.add_file(args.output_artifact)
         run.log_artifact(artifact)
         logger.info("Artifact logged")
-
-
-    # Download input artifact. This will also log that this script is using this
-    # particular version of the artifact
-    # artifact_local_path = run.use_artifact(args.input_artifact).file()
-
-    ######################
-    # YOUR CODE HERE     #
-    ######################
-
 
 if __name__ == "__main__":
 
