@@ -206,7 +206,8 @@ def get_inference_pipeline(rf_config, max_tfidf_features):
     # Create random forest
     random_Forest = RandomForestRegressor(**rf_config)
     rf_tt = TransformedTargetRegressor(regressor=random_Forest,
-                               func=np.log1p)
+                               func=np.log1p,
+                               inverse_func=np.expm1)
 
     sk_pipe = Pipeline(steps=[("preprocessor", preprocessor),
                               ("random_forest", rf_tt),
