@@ -119,7 +119,7 @@ def go(args):
 
 def plot_feature_importance(pipe, feat_names):
     # We collect the feature importance for all non-nlp features first
-    feat_imp = pipe["random_forest"].feature_importances_[: len(feat_names)-1]
+    feat_imp = pipe["random_forest"].regressor_.feature_importances_[: len(feat_names)-1]
     # For the NLP feature we sum across all the TF-IDF dimensions into a global
     # NLP importance
     nlp_importance = sum(pipe["random_forest"].feature_importances_[len(feat_names) - 1:])
