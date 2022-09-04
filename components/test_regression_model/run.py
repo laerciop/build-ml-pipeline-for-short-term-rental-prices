@@ -7,6 +7,7 @@ import logging
 import wandb
 import mlflow
 import pandas as pd
+import numpy as np
 from sklearn.metrics import mean_absolute_error
 
 from wandb_utils.log_artifact import log_artifact
@@ -31,7 +32,7 @@ def go(args):
 
     # Read test dataset
     X_test = pd.read_csv(test_dataset_path)
-    y_test = X_test.pop("price")
+    y_test = np.log1p(X_test.pop("price")) #logging transform feature to meet production conditions
 
     logger.info("Loading model and performing inference on test set")
     sk_pipe = mlflow.sklearn.load_model(model_local_path)
