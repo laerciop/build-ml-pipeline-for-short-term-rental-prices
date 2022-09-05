@@ -6,27 +6,27 @@ entry_points:
     parameters:
 
       input_artifact:
-        description: ## ADD DESCRIPTION
+        description: W6B name for the artifact to be cleaned
         type: string
 
       output_artifact:
-        description: ## ADD DESCRIPTION
+        description: Name for the W&B artifact that will be created
         type: string
 
       output_type:
-        description: ## ADD DESCRIPTION
+        description: Type of the artifact to create
         type: string
 
       output_description:
-        description: ## ADD DESCRIPTION
+        description: Description of the artifact to create
         type: string
 
       min_price:
-        description: ## ADD DESCRIPTION
+        description: Botton cap target variable outlier removal
         type: string
 
       max_price:
-        description: ## ADD DESCRIPTION
+        description: Top cap target variable outlier removal
         type: string
 
 
