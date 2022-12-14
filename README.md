@@ -1,10 +1,9 @@
-# Build an ML Pipeline for Short-Term Rental Prices in NYC
+# ML Pipeline for Short-Term Rental Prices in NYC
 
 
 ##### Note:
 
 Wandb project url: https://wandb.ai/laerciop/nyc_airbnb
-Git project url: https://github.com/laerciop/build-ml-pipeline-for-short-term-rental-prices
 
 To future releases:
 - Test Deep learning regression models
